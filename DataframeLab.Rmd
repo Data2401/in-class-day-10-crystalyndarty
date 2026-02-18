@@ -1,6 +1,6 @@
 ---
 title: "Dataframes - In Class lab"
-author: "Dr. Shoemaker"
+author: "Crystalyn Darty"
 date: "DATA 2401"
 output: html_document
 ---
@@ -21,7 +21,6 @@ Use the `read.csv()` function to read the data from the `gates_donations.csv` fi
 
 grants <- read_csv("gates_donations.csv")
 
-
 head(grants)
 ```
 
@@ -30,7 +29,7 @@ Because you're in an RProject, you don't need to set your working directory in R
 - Use the glimpse function to look at the loaded data
 
 ```{r}
-
+glimpse(grants)
 
 ```
 
@@ -38,7 +37,7 @@ Because you're in an RProject, you don't need to set your working directory in R
 - Create a variable `org` that contains the `organization` column of the dataset
 
 ```{r}
-
+org <-grants$organization 
 
 ```
 
@@ -46,6 +45,7 @@ Because you're in an RProject, you don't need to set your working directory in R
 - Confirm that the "organization" column is a vector using the `is.vector()` function. (This is a useful debugging tip if you hit errors later!)
 
 ```{r}
+is.vector(org)
 
 
 ```
@@ -56,6 +56,8 @@ Now you can ask some interesting questions about the dataset:
 - What was the mean grant value?
 
 ```{r}
+mean(grants$total_amount)
+
 
 ```
 
@@ -63,21 +65,21 @@ Now you can ask some interesting questions about the dataset:
 - What was the dollar amount of the largest grant?
 
 ```{r}
-
+max(grants$total_amount)
 ```
 
 
 - What was the dollar amount of the smallest grant?
 
 ```{r}
-
+min(grants$total_amount)
 ```
 
 
 - Which organization received the largest grant?
 
 ```{r}
-
+org[which.max(grants$total_amount)]
 
 ```
 
@@ -85,19 +87,19 @@ Now you can ask some interesting questions about the dataset:
 - Which organization received the smallest grant?
 
 ```{r}
-
+org[which.min(grants$total_amount)]
 ```
 
 - How many grants were awarded in 2010?
 
 ```{r}
-
+sum(grants$start_year == 2010)
 ```
 
 - How much was awarded in 2010? 
 
 ```{r}
-
+sum(grants$total_amount[grants$start_year == 2010])
 ```
 
 
